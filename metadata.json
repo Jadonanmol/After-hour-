@@ -1,0 +1,12 @@
+{
+  "name": "AFTERHOURS",
+  "description": "Real-time video call, multiplayer gaming lounge, and watch-together hangout for friends.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "display-capture"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

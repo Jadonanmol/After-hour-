@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #08090d;
+    color: #f1f5f9;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.45);
+}
+
+/* Glow & Glass Utilities */
+.glass-panel {
+  background: rgba(13, 15, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-elevated {
+  background: rgba(18, 21, 33, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(99, 102, 241, 0.15);
+}
+
+.glow-accent {
+  box-shadow: 0 0 25px -4px rgba(99, 102, 241, 0.35);
+}
+
+.glow-active {
+  box-shadow: 0 0 18px 2px rgba(16, 185, 129, 0.45);
+}
+
+/* Float reaction animation */
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateY(-80px) scale(1.15) rotate(8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-160px) scale(0.9) rotate(-10deg);
+  }
+}
+
+.animate-float-reaction {
+  animation: floatUp 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Pulse ring for active speaker */
+@keyframes speakerPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+.active-speaker-ring {
+  animation: speakerPulse 1.8s infinite;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cinematic 3D Spatial Utilities & Keyframes                                 */
+/* -------------------------------------------------------------------------- */
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1500 {
+  perspective: 1500px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Idle Floating Levitation for 3D Activity Cards */
+@keyframes levitateA {
+  0%, 100% {
+    transform: translateY(0px) rotateX(2deg) rotateY(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(-2deg) rotateY(2deg);
+  }
+}
+
+@keyframes levitateB {
+  0%, 100% {
+    transform: translateY(-6px) rotateX(-2deg) rotateY(1.5deg);
+  }
+  50% {
+    transform: translateY(2px) rotateX(1.5deg) rotateY(-1.5deg);
+  }
+}
+
+@keyframes levitateC {
+  0%, 100% {
+    transform: translateY(0px) rotateX(1deg) rotateY(2deg);
+  }
+  50% {
+    transform: translateY(-7px) rotateX(-1deg) rotateY(-1deg);
+  }
+}
+
+.animate-levitate-a {
+  animation: levitateA 6s ease-in-out infinite;
+}
+
+.animate-levitate-b {
+  animation: levitateB 7s ease-in-out infinite;
+}
+
+.animate-levitate-c {
+  animation: levitateC 6.5s ease-in-out infinite;
+}
+
+/* Room Entrance Spatial Stagger Reveal */
+@keyframes spatialRoomEntrance {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) translateZ(-60px) rotateX(4deg) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) translateZ(0) rotateX(0deg) scale(1);
+  }
+}
+
+.animate-spatial-room-entrance {
+  animation: spatialRoomEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Watch Together Expansion Transition */
+@keyframes expandToCinema {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) translateZ(-80px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) translateZ(0) scale(1);
+  }
+}
+
+.animate-expand-cinema {
+  animation: expandToCinema 0.55s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+/* Scribble Unfold Transition */
+@keyframes unfoldDrawingBoard {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(-8deg) translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+.animate-unfold-scribble {
+  animation: unfoldDrawingBoard 0.5s cubic-bezier(0.2, 0.85, 0.3, 1) forwards;
+}
+
+/* Spatial Recede Transition (when navigating back) */
+@keyframes spatialRecede {
+  0% {
+    opacity: 1;
+    transform: perspective(1000px) translateZ(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(1000px) translateZ(-70px) scale(0.95);
+  }
+}
+
+.animate-spatial-recede {
+  animation: spatialRecede 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Tactile 3D Button and Card Depth */
+.interactive-3d-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.interactive-3d-card:hover {
+  transform: perspective(1000px) translateY(-6px) translateZ(12px) rotateX(2deg);
+  box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.3), 0 0 25px rgba(139, 92, 246, 0.15);
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+.interactive-3d-card:active {
+  transform: perspective(1000px) translateY(-1px) translateZ(4px) scale(0.985);
+}
+
+/* 3D Button Press Tactile Depth */
+.btn-tactile-3d {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  transform: translateZ(0);
+}
+
+.btn-tactile-3d:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  filter: brightness(1.08);
+}
+
+.btn-tactile-3d:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
